@@ -7,26 +7,25 @@ dotenv.config();
 const app = express();
 
 app.use(cors({
-    origin: '*',
+    origin: '*', 
     methods: ['GET', 'POST'],
     allowedHeaders: ['Content-Type']
 }));
 
 app.use(express.json());
 
-app.use('/caterers', catererRoutes);
+// Add the explicit /api prefixes back here
+app.use('/api/caterers', catererRoutes);
+
+app.get('/api/health', (req, res) => {
+    res.status(200).json({ status: "OK", message: "Express service engine online." });
+});
 
 app.use((err, req, res, next) => {
     console.error(err.stack);
     res.status(500).json({ error: "A critical routing server exception occurred down the main application line." });
 });
 
-//  Update this path to be extensionless under the service layer
-app.get('/health', (req, res) => {
-    res.status(200).json({ status: "OK", message: "Express service engine online." });
-});
-
-// Only run the traditional listen server locally
 if (process.env.NODE_ENV !== 'production') {
     const PORT = process.env.PORT || 5000;
     app.listen(PORT, () => {
@@ -34,5 +33,4 @@ if (process.env.NODE_ENV !== 'production') {
     });
 }
 
-// Required for Vercel serverless distribution loops
 module.exports = app;
