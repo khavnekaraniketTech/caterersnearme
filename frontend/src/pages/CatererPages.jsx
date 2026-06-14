@@ -5,9 +5,12 @@ import { SlidersHorizontal, AlertCircle, ChefHat, Store, Wallet, Star } from 'lu
 import Sidebar from '../components/Sidebar';
 import Navbar from '../components/Navbar';
 import CatererCard from '../components/CatererCards';
-import CatererModal from '../components/CatererModal'; // 👈 Imported the clean separate component
+import CatererModal from '../components/CatererModal'; 
 
-const API_URL = "http://localhost:5000/api/caterers";
+// Dynamic router mapping for local dev versus live Vercel deployments
+const API_URL = window.location.hostname === "localhost" 
+  ? "http://localhost:5000/api/caterers" 
+  : "/api/caterers";
 
 export default function CaterersPage({ view }) {
     const [caterers, setCaterers] = useState([]);
@@ -24,7 +27,7 @@ export default function CaterersPage({ view }) {
                 const response = await axios.get(API_URL);
                 setCaterers(response.data);
             } catch (err) {
-                setError("API Stream Link Broken: Ensure local backend server is initialized across port 5000.");
+                setError("API Connection Error: Could not connect to data sync service.");
             } finally {
                 setLoading(false);
             }
@@ -32,7 +35,6 @@ export default function CaterersPage({ view }) {
         streamCaterers();
     }, []);
 
-    // Filter Logic
     const filteredCaterers = caterers.filter(caterer => {
         const matchesSearch =
             caterer.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
@@ -45,17 +47,14 @@ export default function CaterersPage({ view }) {
         return matchesSearch && matchesPrice;
     });
 
-    // KPI Dashboards Calculations
     const totalVendors = filteredCaterers.length;
     const avgPrice = totalVendors > 0
         ? Math.round(filteredCaterers.reduce((acc, curr) => acc + curr.pricePerPlate, 0) / totalVendors)
         : 0;
     const eliteVendors = filteredCaterers.filter(c => c.rating >= 4.7).length;
 
-    // Handles submitting payload data straight to Express API pipeline
     const handleAddVendorSubmit = async (payloadData) => {
         const response = await axios.post(API_URL, payloadData);
-        // Push response down into core state to instantly reload summary stats
         setCaterers(prev => [response.data, ...prev]);
     };
 
@@ -75,7 +74,6 @@ export default function CaterersPage({ view }) {
                 <Navbar setSearchQuery={setSearchQuery} onAddClick={() => setIsModalOpen(true)} />
 
                 <main className="flex-1 p-6 md:p-8 max-w-7xl w-full mx-auto">
-                    {/* Workspace Title Block */}
                     <div className="mb-6 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
                         <div>
                             <h1 className="text-xl font-black text-slate-900 tracking-tight sm:text-2xl mb-1">
@@ -86,7 +84,6 @@ export default function CaterersPage({ view }) {
                             </p>
                         </div>
 
-                        {/* Budget Sliders Control */}
                         <div className="bg-white p-3.5 rounded-2xl border border-kaiBorder shadow-kai flex items-center space-x-3.5 min-w-[290px]">
                             <div className="p-2 bg-slate-50 border border-kaiBorder rounded-xl text-slate-400 flex-shrink-0">
                                 <SlidersHorizontal className="w-4 h-4" />
@@ -116,7 +113,6 @@ export default function CaterersPage({ view }) {
                         </div>
                     )}
 
-                    {/* Analytics KPI Dashboard Tier */}
                     {!loading && !error && (
                         <div className="grid grid-cols-1 sm:grid-cols-3 gap-5 mb-8">
                             <div className="bg-white p-4 rounded-2xl border border-kaiBorder shadow-kai flex items-center gap-4">
@@ -149,7 +145,6 @@ export default function CaterersPage({ view }) {
                         </div>
                     )}
 
-                    {/* Card Rendering Process */}
                     {loading ? (
                         <div className="flex flex-col justify-center items-center py-36 space-y-3">
                             <div className="animate-spin inline-block w-6 h-6 border-[2.5px] border-kaiPrimary border-t-transparent rounded-full"></div>
@@ -165,7 +160,6 @@ export default function CaterersPage({ view }) {
                         </motion.div>
                     )}
 
-                    {/* Missing Results Screen */}
                     {!loading && filteredCaterers.length === 0 && !error && (
                         <motion.div
                             initial={{ opacity: 0, scale: 0.98 }}
