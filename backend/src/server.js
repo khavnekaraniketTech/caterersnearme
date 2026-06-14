@@ -7,18 +7,23 @@ dotenv.config();
 const app = express();
 
 app.use(cors({
-    origin: '*', 
+    origin: '*',
     methods: ['GET', 'POST'],
     allowedHeaders: ['Content-Type']
 }));
 
 app.use(express.json());
 
-app.use('/api/caterers', catererRoutes);
+app.use('/caterers', catererRoutes);
 
 app.use((err, req, res, next) => {
     console.error(err.stack);
     res.status(500).json({ error: "A critical routing server exception occurred down the main application line." });
+});
+
+//  Update this path to be extensionless under the service layer
+app.get('/health', (req, res) => {
+    res.status(200).json({ status: "OK", message: "Express service engine online." });
 });
 
 // Only run the traditional listen server locally
