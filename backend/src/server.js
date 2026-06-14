@@ -7,19 +7,20 @@ dotenv.config();
 const app = express();
 
 app.use(cors({
-    origin: '*', 
+    origin: '*',
     methods: ['GET', 'POST'],
     allowedHeaders: ['Content-Type']
 }));
 
 app.use(express.json());
 
-// Add the explicit /api prefixes back here
+// Bind both paths to handle local execution and stripped Vercel paths
 app.use('/api/caterers', catererRoutes);
+app.use('/caterers', catererRoutes);
 
-app.get('/api/health', (req, res) => {
-    res.status(200).json({ status: "OK", message: "Express service engine online." });
-});
+// Configure structural fallback targets for system health metrics
+app.get('/api/health', (req, res) => res.status(200).json({ status: "OK" }));
+app.get('/health', (req, res) => res.status(200).json({ status: "OK" }));
 
 app.use((err, req, res, next) => {
     console.error(err.stack);

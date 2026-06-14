@@ -1,80 +1,98 @@
 [
-    {
-        "id": 1,
-        "name": "Royal Feast Caterers",
-        "location": "Mumbai",
-        "pricePerPlate": 450,
-        "cuisines": [
-            "North Indian",
-            "Mughlai",
-            "Chinese"
-        ],
-        "rating": 4.8
-    },
-    {
-        "id": 2,
-        "name": "Spice Craft Catering",
-        "location": "Pune",
-        "pricePerPlate": 320,
-        "cuisines": [
-            "Maharashtrian",
-            "South Indian"
-        ],
-        "rating": 4.5
-    },
-    {
-        "id": 3,
-        "name": "Elite Gourmet Platter",
-        "location": "Delhi",
-        "pricePerPlate": 750,
-        "cuisines": [
-            "Continental",
-            "Italian",
-            "Thai"
-        ],
-        "rating": 4.9
-    },
-    {
-        "id": 4,
-        "name": "The Coastal Kitchen",
-        "location": "Goa",
-        "pricePerPlate": 600,
-        "cuisines": [
-            "Goan Seafood",
-            "Mangalorean"
-        ],
-        "rating": 4.6
-    },
-    {
-        "id": 5,
-        "name": "Vedic Kitchen (Pure Veg)",
-        "location": "Ahmedabad",
-        "pricePerPlate": 380,
-        "cuisines": [
-            "Gujarati",
-            "Rajasthani",
-            "Jain Specialties"
-        ],
-        "rating": 4.7
-    },
-    {
-        "id": 6,
-        "name": "Aniket Khavnekar",
-        "location": "mumbai",
-        "pricePerPlate": 4500,
-        "cuisines": [
-            "konkani"
-        ],
-        "rating": 4.5
-    },
-    {
-        "id": 7,
-        "name": "Aniket Khavnekar",
-        "location": "mumbai",
-        "pricePerPlate": 444,
-        "cuisines": [
-            "konkani"
-        ],
-        "rating": 4
-    }
+  {
+    "id": 3,
+    "name": "Elite Gourmet Platter",
+    "location": "Delhi",
+    "pricePerPlate": 750,
+    "cuisines": [
+      "Continental",
+      "Italian",
+      "Thai"
+    ],
+    "rating": 4.9,
+    "image": "https://images.unsplash.com/photo-1495521821757-a1efb6729352?w=500&auto=format&fit=crop&q=60"
+  },
+  {
+    "id": 1,
+    "name": "Royal Feast Caterers",
+    "location": "Mumbai",
+    "pricePerPlate": 450,
+    "cuisines": [
+      "North Indian",
+      "Mughlai",
+      "Chinese"
+    ],
+    "rating": 4.8,
+    "image": "https://images.unsplash.com/photo-1495521821757-a1efb6729352?w=500&auto=format&fit=crop&q=60"
+  },
+  {
+    "id": 5,
+    "name": "Vedic Kitchen (Pure Veg)",
+    "location": "Ahmedabad",
+    "pricePerPlate": 380,
+    "cuisines": [
+      "Gujarati",
+      "Rajasthani",
+      "Jain Specialties"
+    ],
+    "rating": 4.7,
+    "image": "https://images.unsplash.com/photo-1495521821757-a1efb6729352?w=500&auto=format&fit=crop&q=60"
+  },
+  {
+    "id": 4,
+    "name": "The Coastal Kitchen",
+    "location": "Goa",
+    "pricePerPlate": 600,
+    "cuisines": [
+      "Goan Seafood",
+      "Mangalorean"
+    ],
+    "rating": 4.6,
+    "image": "https://images.unsplash.com/photo-1495521821757-a1efb6729352?w=500&auto=format&fit=crop&q=60"
+  },
+  {
+    "id": 2,
+    "name": "Spice Craft Catering",
+    "location": "Pune",
+    "pricePerPlate": 320,
+    "cuisines": [
+      "Maharashtrian",
+      "South Indian"
+    ],
+    "rating": 4.5,
+    "image": "https://images.unsplash.com/photo-1495521821757-a1efb6729352?w=500&auto=format&fit=crop&q=60"
+  },
+  {
+    "id": 6,
+    "name": "Aniket Khavnekar",
+    "location": "mumbai",
+    "pricePerPlate": 4500,
+    "cuisines": [
+      "konkani"
+    ],
+    "rating": 4.5,
+    "image": "https://images.unsplash.com/photo-1495521821757-a1efb6729352?w=500&auto=format&fit=crop&q=60"
+  },
+  {
+    "id": 7,
+    "name": "Aniket Khavnekar",
+    "location": "mumbai",
+    "pricePerPlate": 444,
+    "cuisines": [
+      "konkani"
+    ],
+    "rating": 4,
+    "image": "https://images.unsplash.com/photo-1495521821757-a1efb6729352?w=500&auto=format&fit=crop&q=60"
+  },
+  {
+    "id": 8,
+    "name": "Aniket Khavnekar",
+    "location": "mumbai",
+    "pricePerPlate": 45,
+    "cuisines": [
+      "konkani dfsf"
+    ],
+    "rating": 4,
+    "image": "https://images.unsplash.com/photo-1495521821757-a1efb6729352?w=500&auto=format&fit=crop&q=60"
+  }
 ]
