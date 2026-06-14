@@ -1,0 +1,15 @@
+@import "tailwindcss";
+
+@theme {
+  --color-kaiDark: #1a2035;
+  --color-kaiBg: #f5f7fd;
+  --color-kaiPrimary: #1572e8;
+  --font-sans: "Public Sans", sans-serif;
+}
+
+/* Base custom definitions */
+@layer base {
+  body {
+    @apply bg-kaiBg text-gray-700 antialiased font-sans;
+  }
+}
